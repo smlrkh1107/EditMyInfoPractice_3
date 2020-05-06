@@ -5,6 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.ImageView
+import android.widget.TextView
+import com.bumptech.glide.Glide
 import kr.tjeit.editmyinfopractice_20200506.R
 import kr.tjeit.editmyinfopractice_20200506.datas.PizzaStore
 
@@ -22,7 +25,13 @@ class PizzaStoreAdapter(val mContext: Context, resId:Int, val mList:ArrayList<Pi
 
         val row = tempRow!!
 
-//        실제 데이터 반영 코드 작업 필요
+        val logoImg = row.findViewById<ImageView>(R.id.logoImg)
+        val nameTxt = row.findViewById<TextView>(R.id.nameTxt)
+
+        val data = mList.get(position)
+
+        nameTxt.text = data.name
+        Glide.with(mContext).load(data.imgUrl).into(logoImg)
 
         return row
     }
@@ -38,7 +47,13 @@ class PizzaStoreAdapter(val mContext: Context, resId:Int, val mList:ArrayList<Pi
 
         val row = tempRow!!
 
-//        실제 데이터 반영 코드 작업 필요
+        val logoImg = row.findViewById<ImageView>(R.id.logoImg)
+        val nameTxt = row.findViewById<TextView>(R.id.nameTxt)
+
+        val data = mList.get(position)
+
+        nameTxt.text = data.name
+        Glide.with(mContext).load(data.imgUrl).into(logoImg)
 
         return row
 
