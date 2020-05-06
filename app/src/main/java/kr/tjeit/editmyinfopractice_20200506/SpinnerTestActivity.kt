@@ -1,23 +1,21 @@
 package kr.tjeit.editmyinfopractice_20200506
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
-import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_spinner_test.*
 import kr.tjeit.editmyinfopractice_20200506.adapters.PizzaStoreAdapter
 import kr.tjeit.editmyinfopractice_20200506.datas.PizzaStore
 
-class MainActivity : BaseActivity() {
+class SpinnerTestActivity : BaseActivity() {
 
     lateinit var myAdapter : PizzaStoreAdapter
     val pizzaStores = ArrayList<PizzaStore>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_spinner_test)
         setupEvents()
         setValues()
     }
