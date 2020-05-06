@@ -16,7 +16,7 @@ class User {
 
             parsedUser.category = Category.getCategoryFromJson(json.getJSONObject("category"))
 
-
+//            parsedUser.createdAt.set()
 
             return parsedUser
         }
@@ -28,7 +28,7 @@ class User {
     var phoneNum = ""
     var memo = ""
 
-    var createdAt = Calendar.getInstance()
+    val createdAt = Calendar.getInstance()
     var category = Category()
 
 }
