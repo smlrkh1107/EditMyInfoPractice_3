@@ -2,8 +2,11 @@ package kr.tjeit.editmyinfopractice_20200506
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 
 class MainActivity : BaseActivity() {
+
+    lateinit var token:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,6 +20,10 @@ class MainActivity : BaseActivity() {
     }
 
     override fun setValues() {
+
+        token = intent.getStringExtra("token")!!
+
+        Log.d("로그인유져토큰", token)
 
     }
 
