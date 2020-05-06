@@ -15,10 +15,18 @@
         android:text="직업 선택" />
 
     <Spinner
+        android:id="@+id/jobSpinner"
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:entries="@array/job_list"
         android:spinnerMode="dropdown"/>
+
+    <Button
+        android:id="@+id/okBtn"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="최종 확정" />
 
 </LinearLayout>
