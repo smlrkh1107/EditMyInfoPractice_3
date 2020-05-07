@@ -104,8 +104,13 @@ class MainActivity : BaseActivity() {
                     for (i in 0..userCategories.length()-1){
                         val uc = userCategories.getJSONObject(i)
                         val categoryObj = Category.getCategoryFromJson(uc)
-                        categoryList.add(categoryObj)
+                        categoryList.add(categoryObj) //서버다녀오는게 멀어서 시간이 걸려..
                     }
+//                어댑터의 ArrayList에 내용 변화 (객체 추가)
+                    runOnUiThread {
+                        categoryAdapter.notifyDataSetChanged()
+                    }
+
                 }
             }
         })
