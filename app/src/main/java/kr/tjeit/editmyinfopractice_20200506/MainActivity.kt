@@ -79,6 +79,29 @@ class MainActivity : BaseActivity() {
 //                        man1BirthDay.set(1988, Calendar.OCTOBER, 20)
 //                        man2BirthDay.set(1988, Calendar.AUGUST, 8)
 
+
+
+//                        실제로 사용중인 카테고리 선택.   userObj.category => 스피너에서 몇 번 째인가 ?
+//                        categoryList 안에서, userObj.category는 몇번째에 있는지 알아야 해.
+////                        [예시] 이렇게도 된다.
+//                        var index = 0
+//                        for (ct in categoryList){
+//                            if(ct.id == userObj.id) {
+//                                break
+//                            }
+//                            index++
+//                        }
+
+
+//                        어디에 들어있니 ??
+                        val index = categoryList.indexOf(userObj.category)
+                        Log.d("목록에서의 위치","${index}") //-1나오면 그런거 없는데?라는거야. 못찾앗다.
+
+                        categorySpinner.setSelection(index)
+
+//                        카테고리가 총 몇개?
+                        Log.d("카테고리 갯수", "${categoryList.size}")
+
                     }
 
                 }

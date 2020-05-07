@@ -18,4 +18,14 @@ class Category {
     var title = ""
     var color = ""
 
+    override fun equals(other: Any?): Boolean {
+        val otherCategory = other as Category
+//        if (this.id == otherCategory.id){
+//            return true
+//        }
+//        else {return false}
+//        줄여쓰렴^^
+        return this.id == otherCategory.id
+    }
+
 }
