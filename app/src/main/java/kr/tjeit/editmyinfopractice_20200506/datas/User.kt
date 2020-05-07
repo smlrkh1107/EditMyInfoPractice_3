@@ -1,6 +1,7 @@
 package kr.tjeit.editmyinfopractice_20200506.datas
 
 import org.json.JSONObject
+import java.text.SimpleDateFormat
 import java.util.*
 
 class User {
@@ -15,6 +16,16 @@ class User {
             parsedUser.memo = json.getString("memo")
 
             parsedUser.category = Category.getCategoryFromJson(json.getJSONObject("category"))
+
+            val createdAtStr = json.getString("created_at")
+
+//            서버의 가입일시 : String > 앱의 가입일시 : Calendar
+//            양식 가공을 SimpleDateFormat으로 진행.
+
+            val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+
+//            가입일시의 값을 Date타입으로 변환한 객체로 대입.
+            parsedUser.createdAt.time = sdf.parse(createdAtStr)
 
 //            parsedUser.createdAt.set()
 
