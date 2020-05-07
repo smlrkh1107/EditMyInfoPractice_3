@@ -32,6 +32,8 @@ class MainActivity : BaseActivity() {
 
     override fun setValues() {
 
+        getCategoryListFromServer()
+
         token = intent.getStringExtra("token")!!
         categoryAdapter = CategorySpinnerAdapter(mContext, R.layout.category_list_item, categoryList)
         categorySpinner.adapter = categoryAdapter
@@ -79,8 +81,6 @@ class MainActivity : BaseActivity() {
 
                     }
 
-
-
                 }
 
             }
@@ -88,8 +88,30 @@ class MainActivity : BaseActivity() {
         })
 
 
+    }
 
+    fun getCategoryListFromServer() {
+        ServerUtil.getRequestUserCategory(mContext, object:ServerUtil.JsonResponseHandler{
+            override fun onResponse(json: JSONObject) {
+                Log.d("카테고리목록", json.toString())
+                val code = json.getInt("code")
+
+                if (code==200){
+                    val data = json.getJSONObject("data")
+                    val userCategories = data.getJSONArray("user_categories")
+
+//                   얜 이름이없어,,, 배열안에 오브젝트 순서만 있을 뿐.
+                    for (i in 0..userCategories.length()-1){
+                        val uc = userCategories.getJSONObject(i)
+                        val categoryObj = Category.getCategoryFromJson(uc)
+                        categoryList.add(categoryObj)
+                    }
+                }
+            }
+        })
 
     }
+
+
 
 }
