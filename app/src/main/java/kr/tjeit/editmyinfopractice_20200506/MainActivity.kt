@@ -3,6 +3,8 @@ package kr.tjeit.editmyinfopractice_20200506
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import kotlinx.android.synthetic.main.activity_main.*
+import kr.tjeit.editmyinfopractice_20200506.datas.User
 import kr.tjeit.editmyinfopractice_20200506.utils.ServerUtil
 import org.json.JSONObject
 
@@ -33,6 +35,31 @@ class MainActivity : BaseActivity() {
         ServerUtil.getRequestMyInfo(mContext, token, object : ServerUtil.JsonResponseHandler {
             override fun onResponse(json: JSONObject) {
                 Log.d("내정보응답", json.toString())
+
+                val code = json.getInt("code")
+
+                if (code == 200) {
+
+                    val data = json.getJSONObject("data")
+                    val user = data.getJSONObject("user")
+
+                    val userObj = User.getUserFromJsonObject(user)
+
+//                    만들어낸 사용자 객체를 화면에 반영 (UI작업)
+
+                    runOnUiThread {
+
+                        idTxt.text = userObj.loginId
+                        nameEdt.setText(userObj.name)
+                        phoneNumEdt.setText(userObj.phoneNum)
+                        memoEdt.setText(userObj.memo)
+
+                    }
+
+
+
+                }
+
             }
 
         })
