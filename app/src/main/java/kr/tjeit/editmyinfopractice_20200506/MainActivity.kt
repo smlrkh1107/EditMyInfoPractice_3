@@ -3,7 +3,10 @@ package kr.tjeit.editmyinfopractice_20200506
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.ArrayAdapter
 import kotlinx.android.synthetic.main.activity_main.*
+import kr.tjeit.editmyinfopractice_20200506.adapters.CategorySpinnerAdapter
+import kr.tjeit.editmyinfopractice_20200506.datas.Category
 import kr.tjeit.editmyinfopractice_20200506.datas.User
 import kr.tjeit.editmyinfopractice_20200506.utils.ServerUtil
 import org.json.JSONObject
@@ -13,6 +16,8 @@ import java.util.*
 class MainActivity : BaseActivity() {
 
     lateinit var token:String
+    lateinit var categoryAdapter: CategorySpinnerAdapter
+    val categoryList = ArrayList<Category>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +33,8 @@ class MainActivity : BaseActivity() {
     override fun setValues() {
 
         token = intent.getStringExtra("token")!!
+        categoryAdapter = CategorySpinnerAdapter(mContext, R.layout.category_list_item, categoryList)
+        categorySpinner.adapter = categoryAdapter
 
         Log.d("로그인유져토큰", token)
 
@@ -69,12 +76,6 @@ class MainActivity : BaseActivity() {
 ////                        월은 0부터 시작이라서 맘편히 이렇게 적는게 나아.
 //                        man1BirthDay.set(1988, Calendar.OCTOBER, 20)
 //                        man2BirthDay.set(1988, Calendar.AUGUST, 8)
-
-
-
-
-
-
 
                     }
 
