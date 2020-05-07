@@ -8,6 +8,7 @@ import kr.tjeit.editmyinfopractice_20200506.datas.User
 import kr.tjeit.editmyinfopractice_20200506.utils.ServerUtil
 import org.json.JSONObject
 import java.text.SimpleDateFormat
+import java.util.*
 
 class MainActivity : BaseActivity() {
 
@@ -58,8 +59,21 @@ class MainActivity : BaseActivity() {
 //                        Calendal 가입일시 > String으로 변환.
 //                        텍스트뷰에 대입
 
-                        val printSdf = SimpleDateFormat("yyyy년 M월 d일")
+                        val printSdf = SimpleDateFormat("yyyy년 M월 d일 (E)")
                         signUpDateTxt.text = printSdf.format(userObj.createdAt.time)
+
+////                        사람1 1988-10-20 생일 / 사람2 1988-08-08 (요일양식추가 예시)
+//                        val man1BirthDay = Calendar.getInstance()
+//                        val man2BirthDay = Calendar.getInstance()
+//
+////                        월은 0부터 시작이라서 맘편히 이렇게 적는게 나아.
+//                        man1BirthDay.set(1988, Calendar.OCTOBER, 20)
+//                        man2BirthDay.set(1988, Calendar.AUGUST, 8)
+
+
+
+
+
 
 
                     }
